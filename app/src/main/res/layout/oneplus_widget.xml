@@ -22,27 +22,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:fontFamily="@font/oneplus_light"
         android:shadowColor="#7F000000"
         android:shadowDx="1"
         android:shadowDy="1"
         android:shadowRadius="2"
-        android:fontFamily="@font/oneplus_light"
         android:text="Haze"
-        android:textColor="?android:attr/textColorPrimary"
+        android:textColor="@color/widget_secondary_text_colo"
         android:textSize="25sp" />
 
     <TextClock
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/oneplus_light"
         android:format12Hour="EEEE, MMMM d"
         android:format24Hour="EEEE, MMMM d"
         android:shadowColor="#7F000000"
         android:shadowDx="1"
         android:shadowDy="1"
         android:shadowRadius="2"
-        android:fontFamily="@font/oneplus_light"
         android:text="Thursday, March 3"
-        android:textColor="?android:attr/textColorPrimary"
+        android:textColor="@color/widget_tertiary_text_color"
+        android:textFontWeight="400"
         android:textSize="17sp" />
 
 </LinearLayout>

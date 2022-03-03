@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="widget_text_color">@android:color/system_accent1_600</color>
+    <color name="widget_secondary_text_colo">@android:color/system_accent2_100</color>
+    <color name="widget_tertiary_text_color">@android:color/system_accent3_100</color>
 </resources>

@@ -19,7 +19,7 @@ class WeatherService(val context: Context) {
     private val BASE_URL = "https://api.openweathermap.org/data/2.5/"
 
 
-    fun getWeather(location: String, callback: (temp: Double?, desc: String?) -> Unit) {
+    fun getWeather(location: String): Call<WeatherData> {
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_URL)
@@ -28,20 +28,7 @@ class WeatherService(val context: Context) {
         val retrofitData = retrofitBuilder.getData(
             location, context.getString(R.string.apiId)
         )
-        retrofitData.enqueue(object : Callback<WeatherData?> {
-            override fun onResponse(call: Call<WeatherData?>, response: Response<WeatherData?>) {
-                if (response.isSuccessful) {
-                    val responseBody = response.body()
-                    callback(responseBody?.main?.temp, responseBody?.weather?.get(0)?.description)
-                } else {
-                    callback(null, null)
-                }
-            }
-
-            override fun onFailure(call: Call<WeatherData?>, t: Throwable) {
-                callback(null, null)
-            }
-        })
+        return retrofitData
     }
 
 }
