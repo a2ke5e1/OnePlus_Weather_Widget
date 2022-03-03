@@ -46,7 +46,7 @@ class OneplusWidget : AppWidgetProvider() {
         appWidgetId: Int
     ) {
 
-        WeatherService(context).getWeather { temp, desc ->
+        WeatherService(context).getWeather("Haldia") { temp, desc ->
 
 
 
