@@ -5,8 +5,6 @@ import android.content.Context
 import com.a2krocks.widget.R
 import com.a2krocks.widget.services.data.WeatherData
 import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -19,16 +17,15 @@ class WeatherService(val context: Context) {
     private val BASE_URL = "https://api.openweathermap.org/data/2.5/"
 
 
-    fun getWeather(location: String): Call<WeatherData> {
+    fun getWeather(lat: String, lon: String): Call<WeatherData> {
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_URL)
             .build()
             .create(WeatherInterface::class.java)
-        val retrofitData = retrofitBuilder.getData(
-            location, context.getString(R.string.apiId)
+        return retrofitBuilder.getData(
+            lat, lon, context.getString(R.string.apiId)
         )
-        return retrofitData
     }
 
 }
@@ -36,7 +33,8 @@ class WeatherService(val context: Context) {
 interface WeatherInterface {
     @GET("weather?&units=metric")
     fun getData(
-        @Query("q") location: String,
+        @Query("lat") lat: String,
+        @Query("lon") lon: String,
         @Query("appid") apiKey: String
     ): Call<WeatherData>
 }
