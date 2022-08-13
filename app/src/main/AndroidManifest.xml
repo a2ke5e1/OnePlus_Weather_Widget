@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -25,6 +26,8 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/oneplus_widget_info" />
         </receiver>
+
+        <receiver android:name=".services.OneplusWidgetService" />
     </application>
 
 </manifest>

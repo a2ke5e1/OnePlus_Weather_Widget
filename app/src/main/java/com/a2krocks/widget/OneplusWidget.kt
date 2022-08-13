@@ -6,7 +6,9 @@ import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.location.LocationManager
 import android.os.Bundle
+import android.util.Log
 import android.widget.RemoteViews
+import com.a2krocks.widget.services.AlarmHandler
 import com.a2krocks.widget.services.WeatherService
 
 /**
@@ -22,6 +24,11 @@ class OneplusWidget : AppWidgetProvider() {
         for (appWidgetId in appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId)
         }
+    }
+
+    override fun onDisabled(context: Context) {
+        val alarmHandler = AlarmHandler(context)
+        alarmHandler.cancelAlarmManager()
     }
 
     override fun onAppWidgetOptionsChanged(
@@ -41,18 +48,20 @@ class OneplusWidget : AppWidgetProvider() {
         appWidgetId: Int
     ) {
         val views = RemoteViews(context.packageName, R.layout.oneplus_widget)
-        val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        locationManager.requestLocationUpdates(
-            LocationManager.GPS_PROVIDER, 2000, 10f
-        ) {
-            WeatherService(context).updateWeatherWidget(
-                it.latitude.toString(),
-                it.longitude.toString(),
-                remoteViews = views,
-                appWidgetId = appWidgetId,
-                appWidgetManager = appWidgetManager
-            )
-        }
+
+        val pref = context.getSharedPreferences("test", Context.MODE_PRIVATE)
+        val test = pref.getInt("test", 0)
+
+            pref.edit().putInt("test", test + 1 ).commit()
+
+
+        Log.d("Test", "test $test")
+
+        appWidgetManager.updateAppWidget(appWidgetId, views)
+
+        val alarmHandler = AlarmHandler(context)
+        alarmHandler.cancelAlarmManager()
+        alarmHandler.setAlarmManager()
     }
 }
 
