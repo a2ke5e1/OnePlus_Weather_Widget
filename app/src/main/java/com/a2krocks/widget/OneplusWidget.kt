@@ -48,16 +48,34 @@ class OneplusWidget : AppWidgetProvider() {
         appWidgetId: Int
     ) {
         val views = RemoteViews(context.packageName, R.layout.oneplus_widget)
+        val locationPreferences = context.getSharedPreferences("location_pref", Context.MODE_PRIVATE)
+        val lat = locationPreferences.getString("location_pref_lat", null)
+        val long = locationPreferences.getString("location_pref_long", null)
 
-        val pref = context.getSharedPreferences("test", Context.MODE_PRIVATE)
-        val test = pref.getInt("test", 0)
+        val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        locationManager.requestLocationUpdates(
+            LocationManager.GPS_PROVIDER, 2000, 10f
+        ) {
 
-            pref.edit().putInt("test", test + 1 ).commit()
+            val edit = locationPreferences.edit()
+            edit.putString("location_pref_lat", it.latitude.toString()).apply()
+            edit.putString("location_pref_long", it.longitude.toString()).apply()
 
+            Log.d("Long", "${it.longitude}")
+            Log.d("Lat", "${it.latitude}")
+        }
 
-        Log.d("Test", "test $test")
+        Log.d("data_long", "${long}")
+        Log.d("data_lat", "${lat}")
 
-        appWidgetManager.updateAppWidget(appWidgetId, views)
+        WeatherService(context).updateWeatherWidget(
+            lat = lat!!,
+            lon = long!!,
+            remoteViews = views,
+            appWidgetId, appWidgetManager
+        )
+
+        // appWidgetManager.updateAppWidget(appWidgetId, views)
 
         val alarmHandler = AlarmHandler(context)
         alarmHandler.cancelAlarmManager()
