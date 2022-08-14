@@ -79,7 +79,7 @@ class OneplusWidget : AppWidgetProvider() {
         Log.d("location.get.local", "Got Location from Saved : $isLocationSaved")
 
         if (isLocationSaved) {
-            val data = WeatherService(context).retrofitBuilder.getData(
+            val data = WeatherService().retrofitBuilder.getData(
                 lat!!, long!!, context.getString(R.string.apiId)
             )
             data.enqueue(object : Callback<WeatherData> {

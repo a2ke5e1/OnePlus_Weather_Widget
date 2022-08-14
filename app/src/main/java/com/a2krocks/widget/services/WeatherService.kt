@@ -23,7 +23,7 @@ import retrofit2.http.Query
 import java.util.*
 import kotlin.math.roundToInt
 
-class WeatherService(private val context: Context) {
+class WeatherService {
 
 
     private val BASE_URL = "https://api.openweathermap.org/data/2.5/"
