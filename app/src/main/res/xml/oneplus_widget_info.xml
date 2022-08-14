@@ -6,7 +6,7 @@
     android:minWidth="200dp"
     android:minHeight="80dp"
     android:previewImage="@drawable/example_appwidget_preview"
-    android:previewLayout="@layout/oneplus_widget"
+    android:previewLayout="@layout/oneplus_widget_preview"
     android:resizeMode="horizontal|vertical"
     android:targetCellWidth="1"
     android:targetCellHeight="1"

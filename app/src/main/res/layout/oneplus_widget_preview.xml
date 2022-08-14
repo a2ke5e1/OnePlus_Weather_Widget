@@ -5,20 +5,48 @@
     android:orientation="vertical"
     android:theme="@style/Theme.OneplusWidget.AppWidgetContainer">
 
-    <TextView
-        android:id="@+id/tempTextView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:shadowColor="#7F000000"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="2"
-        android:text=""
-        android:textColor="@color/widget_text_color"
-        android:textSize="70sp" />
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="#7F000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
+            android:text="2"
+            android:textColor="@color/widget_text_color"
+            android:textSize="70sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="#7F000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
+            android:text="4"
+            android:textColor="@color/white"
+            android:textSize="70sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="#7F000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
+            android:text="℃"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/descTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -27,7 +55,7 @@
         android:shadowDx="1"
         android:shadowDy="1"
         android:shadowRadius="2"
-        android:text="Loading..."
+        android:text="Cloudy"
         android:textColor="@color/widget_secondary_text_colo"
         android:textSize="25sp" />
 

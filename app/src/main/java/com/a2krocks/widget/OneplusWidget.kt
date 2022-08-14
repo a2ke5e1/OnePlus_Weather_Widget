@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.text.style.RelativeSizeSpan
 import android.util.Log
 import android.widget.RemoteViews
 import com.a2krocks.widget.services.AlarmHandler
@@ -90,13 +91,19 @@ class OneplusWidget : AppWidgetProvider() {
                             val roundedTemperature = temperature.roundToInt()
 
 
-                            val temperatureFormatted = "${roundedTemperature}°"
+                            val temperatureFormatted = "${roundedTemperature}℃"
                             val weatherDescription = weatherData.weather[0].description.capitalizeWords()
 
                             val spannable = SpannableString(temperatureFormatted)
                             spannable.setSpan(
                                 ForegroundColorSpan(Color.WHITE),
                                 1,
+                                temperatureFormatted.length,
+                                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                            )
+                            spannable.setSpan(
+                                RelativeSizeSpan(0.4f),
+                                temperatureFormatted.length - 1,
                                 temperatureFormatted.length,
                                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
                             )

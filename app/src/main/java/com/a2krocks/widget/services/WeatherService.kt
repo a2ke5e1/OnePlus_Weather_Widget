@@ -27,7 +27,6 @@ class WeatherService(private val context: Context) {
 
 
     private val BASE_URL = "https://api.openweathermap.org/data/2.5/"
-    private val pref = context.getSharedPreferences("WeatherData", Context.MODE_PRIVATE)
     val retrofitBuilder = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
         .baseUrl(BASE_URL)
