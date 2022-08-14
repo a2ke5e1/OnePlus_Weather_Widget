@@ -122,6 +122,12 @@ class WeatherService(private val context: Context) {
         remoteViews.setTextViewText(R.id.descTextView, weatherDescription)
     }
 
+    companion object {
+        const val LOCATION_PREFERENCE = "location_pref"
+        const val LOCATION_PREFERENCE_LATITUDE = "location_pref_lat"
+        const val LOCATION_PREFERENCE_LONGITUDE = "location_pref_long"
+    }
+
 }
 
 interface WeatherInterface {
