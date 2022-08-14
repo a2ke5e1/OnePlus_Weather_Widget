@@ -106,7 +106,7 @@ class OneplusWidget : AppWidgetProvider() {
 
                         }
                         Log.d("response.weatherData.isNull", (weatherData == null).toString())
-                        Log.d("response.isSuccessful", response.toString())
+                        Log.d("response.isSuccessful", response.isSuccessful.toString())
 
                     } else {
                         val errorBody = response.errorBody()
