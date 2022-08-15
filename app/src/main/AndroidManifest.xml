@@ -17,7 +17,7 @@
         android:theme="@style/Theme.OneplusWidget">
         <receiver
             android:name=".OneplusWidget"
-            android:exported="true">
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -27,7 +27,8 @@
                 android:resource="@xml/oneplus_widget_info" />
         </receiver>
 
-        <receiver android:name=".services.OneplusWidgetService" />
+        <receiver android:name=".services.OneplusWidgetService"
+            android:exported="true" />
     </application>
 
 </manifest>
