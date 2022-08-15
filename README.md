@@ -17,7 +17,7 @@ it will not update and will say it's loading. </li>
 **If any issue, Please give me logs.**
 
 ## Build:
-In order to build of your own you will be API key from [OpenWeatherMap]([https://openweathermap.org/api](https://openweathermap.org/api)).
+In order to build of your own you will be API key from [OpenWeatherMap](https://openweathermap.org/api).
 <br>
 After obtaining API key, you need to create a string in `string.xml` or `api_keys.xml` with name 'apiId' andd value your API key. 
 ```xml
