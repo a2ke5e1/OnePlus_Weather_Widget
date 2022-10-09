@@ -1,34 +1,30 @@
-package com.a2krocks.widget.services;
+package com.a2krocks.widget.services
 
+import android.content.Context
+import android.os.PowerManager
 
-import android.content.Context;
-import android.os.PowerManager;
-
-public abstract class WakeLocker {
-
-    private static PowerManager.WakeLock wakeLock;
+object WakeLocker {
+    private var wakeLock: PowerManager.WakeLock? = null
 
     //wake the device
-    public static void acquire(Context context) {
+    fun acquire(context: Context) {
         if (wakeLock != null) {
-            wakeLock.release();
+            wakeLock.release()
         }
-
-        PowerManager powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        val powerManager: PowerManager = context.getSystemService(Context.POWER_SERVICE) as PowerManager
         wakeLock = powerManager.newWakeLock(
-                PowerManager.PARTIAL_WAKE_LOCK |
-                        PowerManager.ACQUIRE_CAUSES_WAKEUP |
-                        PowerManager.ON_AFTER_RELEASE,
-                "WIDGET: Wake lock acquired!"
-        );
-        wakeLock.acquire(1500);
+            PowerManager.PARTIAL_WAKE_LOCK or
+                    PowerManager.ACQUIRE_CAUSES_WAKEUP or
+                    PowerManager.ON_AFTER_RELEASE,
+            "WIDGET: Wake lock acquired!"
+        )
+        wakeLock.acquire(1500)
     }
 
-    public static void release() {
+    fun release() {
         if (wakeLock != null) {
-            wakeLock.release();
+            wakeLock.release()
         }
-        wakeLock = null;
+        wakeLock = null
     }
-
 }
