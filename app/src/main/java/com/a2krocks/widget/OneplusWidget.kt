@@ -48,6 +48,7 @@ class OneplusWidget : AppWidgetProvider() {
         appWidgetId: Int,
         newOptions: Bundle?
     ) {
+        Log.d("WidgetService", "Widget is Starting")
         updateAppWidget(context, appWidgetManager, appWidgetId)
         super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId, newOptions)
     }
