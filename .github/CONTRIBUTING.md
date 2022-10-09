@@ -3,6 +3,10 @@
 ## Getting Started 
 Go to Issue Page, Check out issues with label with "help wanted".
 
+### Note
+If you are going to use Github actions, add your [OpenWeatherMap API](https://openweathermap.org/api) Key to your fork's secrets settings. 
+Read Testing and Building Section.
+
 **Few Rules before creating a pull request**
 * Preferred Language is **Kotlin** 
 * Before, creating a pull request make sure your app compiles.
@@ -15,7 +19,12 @@ eg; If you create a Dialog Box for permission in [issue #2](https://github.com/a
 ## Testing and Building
 In order to test and build of your own you will be API key from [OpenWeatherMap](https://openweathermap.org/api).
 <br>
-After obtaining API key, you need to create a string in `string.xml` or `api_keys.xml` with name 'apiId' andd value your API key.
-```xml
-    <string name="apiId">your_key_here</string>
+After obtaining API key, if you are building locally put your api key in environment variable
 ```
+    API_KEY : "YOUR_API_KEY"
+```
+If you are using github actions, Go to your fork's 
+
+Settings > Secrets > Actions > Click on New repository secert > under Name put `API_KEY` > under Secret `YOUR_API_KEY` > then click Add Secret 
+
+You are ready to use github actions to compile your android app.
