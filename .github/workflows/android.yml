@@ -21,7 +21,7 @@ jobs:
         with:
           java-version: 11
       - name: Move file api_keys
-        run: sudo mv /home/runner/work/_temp/api_keys.xml /home/runner/work/OnePlus_Weather_Widget/OnePlus_Widget/app/src/main/res/values/
+        run: sudo mv /home/runner/work/_temp/api_keys.xml /home/runner/work/OnePlus_Weather_Widget/OnePlus_Weather_Widget/app/src/main/res/values/
 
       - name: Make gradlew executable
         run: chmod +x ./gradlew
