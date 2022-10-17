@@ -6,18 +6,23 @@ An attempt to clone OnePlus's Classic Weather Widget with android 12 theme suppo
 
 ## Instructions:
 Before installing read these instructions:
-<ul>
-    <li>Allow location access at all times and add the Weather Widget to your home screen, else the weather will not update and "Loading..." will continue to appear.
- </li>
+
+ * Allow location access at all times and add the Weather Widget to your home screen, else the weather will not update and "Loading..." will continue to appear.
+ 
 ![](screenshots/L1.jpg)
 
-<li>After allowing location access, it will take some time to load when booted for the first time. Be patient.</li>
-</ul>
+
+ After allowing location access, it will take some time to load when booted for the first time. Be patient.
+
 
 **If any issue prevails, Please send me the logs.**
 
 ## Build:
 In order to test and build the widget on your own, you will require an API key from [OpenWeatherMap](https://openweathermap.org/api).
+
+![](screenshots/API1.jpg)
+![](screenshots/API2.jpg)
+
 <br>
 After obtaining API key,  After obtaining API key, if building locally, put your API key in environment variable as:
 ```
