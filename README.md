@@ -12,7 +12,7 @@ Before installing read these instructions:
 ![](screenshots/L1.png)
 
 
- After allowing location access, it will take some time to load when booted for the first time. Be patient.
+ * After allowing location access, it will take some time to load when booted for the first time. Be patient.
 
 
 **If any issue prevails, Please send me the logs.**
