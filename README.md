@@ -9,7 +9,7 @@ Before installing read these instructions:
 <ul>
     <li>Allow location access at all times and add the Weather Widget to your home screen, else the weather will not update and "Loading..." will continue to appear.
  </li>
-
+![](screenshots/L1.jpg)
 
 <li>After allowing location access, it will take some time to load when booted for the first time. Be patient.</li>
 </ul>
