@@ -7,7 +7,7 @@ An attempt to clone OnePlus's Classic Weather Widget with android 12 theme suppo
 ## Instructions:
 Before installing read these instructions:
 <ul>
-    <li>Allow location access at all times, else the weather will not update and a pop up saying "it's loading" will continue to appear, add the Weather Widget to your home screen. </li>
+    <li>Allow location access at all times and add the Weather Widget to your home screen, else the weather will not update and "Loading..." will continue to appear. </li>
 
 <li>After allowing location access, it will take some time to load when booted for the first time. Be patient.</li>
 </ul>
