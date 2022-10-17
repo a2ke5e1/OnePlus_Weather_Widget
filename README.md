@@ -1,4 +1,4 @@
-# OnePlus Weather Widget
+t# OnePlus Weather Widget
 
 An attempt to clone OnePlus's Classic Weather Widget with android 12 theme support. It uses OpenWeatherMap's API to get weather data.
 
@@ -25,6 +25,7 @@ In order to test and build the widget on your own, you will require an API key f
 
 <br>
 After obtaining API key,  After obtaining API key, if building locally, put your API key in environment variable as:
+
 ```
     API_KEY : "YOUR_API_KEY"
 ```
