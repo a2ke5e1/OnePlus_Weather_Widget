@@ -15,7 +15,7 @@ Before installing read these instructions:
 **If any issue prevails, Please send me the logs.**
 
 ## Build:
-In order to test and build of your own you will be API key from [OpenWeatherMap](https://openweathermap.org/api).
+In order to test and build the widget on your own, you will require an API key from [OpenWeatherMap](https://openweathermap.org/api).
 <br>
 After obtaining API key,  After obtaining API key, if building locally, put your API key in environment variable as:
 ```
