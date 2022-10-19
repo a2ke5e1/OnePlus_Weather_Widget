@@ -12,7 +12,10 @@ import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.text.style.RelativeSizeSpan
 import android.util.Log
+import android.util.TypedValue
+import android.view.View
 import android.widget.RemoteViews
+import androidx.core.content.ContextCompat
 import com.a2krocks.widget.services.AlarmHandler
 import com.a2krocks.widget.services.WeatherService
 import com.a2krocks.widget.services.capitalizeWords
@@ -92,22 +95,30 @@ class OneplusWidget : AppWidgetProvider() {
                             val roundedTemperature = temperature.roundToInt()
 
 
-                            val temperatureFormatted = "${roundedTemperature}℃"
+                            val temperatureFormatted = "${roundedTemperature}°"
                             val weatherDescription = weatherData.weather[0].description.capitalizeWords()
 
                             val spannable = SpannableString(temperatureFormatted)
+                            var hsv = FloatArray(3)
+                            val accentColor = ContextCompat.getColor(context, R.color.widget_text_color)
+                            Color.colorToHSV(accentColor, hsv)
+
+                            hsv[2] = 0.92f
+
                             spannable.setSpan(
-                                ForegroundColorSpan(Color.WHITE),
+                                ForegroundColorSpan(Color.HSVToColor(hsv)),
+                                0,
                                 1,
-                                temperatureFormatted.length,
                                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
                             )
                             spannable.setSpan(
-                                RelativeSizeSpan(0.4f),
+                                RelativeSizeSpan(0.9f),
                                 temperatureFormatted.length - 1,
                                 temperatureFormatted.length,
                                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
                             )
+                            views.setViewVisibility(R.id.tempTextView, View.VISIBLE)
+                            views.setTextViewTextSize(R.id.descTextView, TypedValue.COMPLEX_UNIT_SP, 25f)
 
                             views.setTextViewText(R.id.tempTextView, spannable)
                             views.setTextViewText(R.id.descTextView, weatherDescription)

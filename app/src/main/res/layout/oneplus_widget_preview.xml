@@ -14,10 +14,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:shadowColor="#7F000000"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="2"
+            android:fontFamily="@font/oneplus_light"
+            android:shadowColor="#2D000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="4"
             android:text="2"
             android:textColor="@color/widget_text_color"
             android:textSize="70sp" />
@@ -25,10 +26,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:shadowColor="#7F000000"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="2"
+            android:fontFamily="@font/oneplus_light"
+            android:shadowColor="#2D000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="4"
             android:text="4"
             android:textColor="@color/white"
             android:textSize="70sp" />
@@ -36,13 +38,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:shadowColor="#7F000000"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="2"
-            android:text="℃"
+            android:fontFamily="@font/oneplus_light"
+            android:shadowColor="#2D000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="4"
+            android:text="°"
             android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:textSize="65sp" />
 
     </LinearLayout>
 
@@ -51,10 +54,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/oneplus_light"
-        android:shadowColor="#7F000000"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="2"
+        android:shadowColor="#2D000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4"
         android:text="Cloudy"
         android:textColor="@color/widget_secondary_text_colo"
         android:textSize="25sp" />
@@ -65,10 +68,10 @@
         android:fontFamily="@font/oneplus_light"
         android:format12Hour="EEEE, MMMM d"
         android:format24Hour="EEEE, MMMM d"
-        android:shadowColor="#7F000000"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="2"
+        android:shadowColor="#2D000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4"
         android:text="Thursday, March 3"
         android:textColor="@color/widget_tertiary_text_color"
         android:textFontWeight="400"
