@@ -9,12 +9,14 @@
         android:id="@+id/tempTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:shadowColor="#7F000000"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="2"
-        android:text=""
-        android:textColor="@color/widget_text_color"
+        android:fontFamily="@font/oneplus_light"
+        android:shadowColor="#2D000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:textFontWeight="300"
+        android:shadowRadius="4"
+        android:textColor="#ffffff"
+        android:visibility="gone"
         android:textSize="70sp" />
 
     <TextView
@@ -23,13 +25,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/oneplus_light"
-        android:shadowColor="#7F000000"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="2"
-        android:text="Loading..."
+        android:shadowColor="#2D000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4"
+        android:text="Never\nSettle"
         android:textColor="@color/widget_secondary_text_colo"
-        android:textSize="25sp" />
+        android:textSize="50sp" />
 
     <TextClock
         android:layout_width="match_parent"
@@ -37,13 +39,13 @@
         android:fontFamily="@font/oneplus_light"
         android:format12Hour="EEEE, MMMM d"
         android:format24Hour="EEEE, MMMM d"
-        android:shadowColor="#7F000000"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="2"
+        android:shadowColor="#2D000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4"
         android:text="Thursday, March 3"
         android:textColor="@color/widget_tertiary_text_color"
         android:textFontWeight="400"
-        android:textSize="17sp" />
+        android:textSize="14sp" />
 
 </LinearLayout>
