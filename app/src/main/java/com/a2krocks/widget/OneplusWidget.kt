@@ -1,9 +1,12 @@
 package com.a2krocks.widget
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.LocationManager
 import android.os.Bundle
@@ -15,6 +18,7 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.widget.RemoteViews
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.a2krocks.widget.services.AlarmHandler
 import com.a2krocks.widget.services.WeatherService
@@ -56,7 +60,6 @@ class OneplusWidget : AppWidgetProvider() {
         super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId, newOptions)
     }
 
-    @SuppressLint("MissingPermission")
     private fun updateAppWidget(
         context: Context,
         appWidgetManager: AppWidgetManager,
@@ -68,7 +71,19 @@ class OneplusWidget : AppWidgetProvider() {
         val long = locationPreferences.getString(WeatherService.LOCATION_PREFERENCE_LONGITUDE, null)
         val isLocationSaved = lat != null && long != null
 
+
+
         val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        if (ActivityCompat.checkSelfPermission(
+                context,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                context,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
         locationManager.requestLocationUpdates(
             LocationManager.GPS_PROVIDER, 2000, 10f
         ) {

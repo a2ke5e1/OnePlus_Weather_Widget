@@ -14,6 +14,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OneplusWidget">
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true"
+            android:theme="@style/Theme.OneplusWidget"
+            android:label="@string/title_activity_settings">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            </intent-filter>
+        </activity>
+
         <receiver
             android:name=".OneplusWidget"
             android:exported="false">
@@ -25,8 +40,8 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/oneplus_widget_info" />
         </receiver>
-
-        <receiver android:name=".services.OneplusWidgetService"
+        <receiver
+            android:name=".services.OneplusWidgetService"
             android:exported="true" />
     </application>
 
