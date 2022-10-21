@@ -20,6 +20,7 @@
             android:shadowDy="2"
             android:shadowRadius="4"
             android:text="2"
+            android:textFontWeight="300"
             android:textColor="@color/widget_text_color"
             android:textSize="70sp" />
 
@@ -29,6 +30,7 @@
             android:fontFamily="@font/oneplus_light"
             android:shadowColor="#2D000000"
             android:shadowDx="2"
+            android:textFontWeight="300"
             android:shadowDy="2"
             android:shadowRadius="4"
             android:text="4"
@@ -43,6 +45,7 @@
             android:shadowDx="2"
             android:shadowDy="2"
             android:shadowRadius="4"
+            android:textFontWeight="300"
             android:text="°"
             android:textColor="@color/white"
             android:textSize="65sp" />

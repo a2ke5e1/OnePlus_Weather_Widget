@@ -5,11 +5,12 @@ import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.view.MenuItem
+import android.widget.RemoteViews
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.SwitchPreferenceCompat
 import com.google.android.material.color.DynamicColors
 
 class SettingsActivity : AppCompatActivity() {
@@ -31,6 +32,7 @@ class SettingsActivity : AppCompatActivity() {
                 .commit()
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 
         val appWidgetId = intent?.extras?.getInt(
             AppWidgetManager.EXTRA_APPWIDGET_ID,
@@ -69,6 +71,31 @@ class SettingsActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+
+                val appWidgetId = intent?.extras?.getInt(
+                    AppWidgetManager.EXTRA_APPWIDGET_ID,
+                    AppWidgetManager.INVALID_APPWIDGET_ID
+                ) ?: AppWidgetManager.INVALID_APPWIDGET_ID
+
+                val appWidgetManager = AppWidgetManager.getInstance(this)
+                val views = RemoteViews(this.packageName, R.layout.oneplus_widget)
+                appWidgetManager.updateAppWidget(appWidgetId, views)
+
+
+
+
+                val resultValue = Intent().putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+                setResult(Activity.RESULT_OK, resultValue)
+                finish()
+                return false
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
     }
 
     class SettingsFragment : PreferenceFragmentCompat() {

@@ -1,11 +1,9 @@
 package com.a2krocks.widget
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.LocationManager
@@ -20,6 +18,7 @@ import android.view.View
 import android.widget.RemoteViews
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.preference.PreferenceManager
 import com.a2krocks.widget.services.AlarmHandler
 import com.a2krocks.widget.services.WeatherService
 import com.a2krocks.widget.services.capitalizeWords
@@ -34,9 +33,7 @@ import kotlin.math.roundToInt
  */
 class OneplusWidget : AppWidgetProvider() {
     override fun onUpdate(
-        context: Context,
-        appWidgetManager: AppWidgetManager,
-        appWidgetIds: IntArray
+        context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray
     ) {
         // There may be multiple widgets active, so update all of them
         for (appWidgetId in appWidgetIds) {
@@ -50,10 +47,7 @@ class OneplusWidget : AppWidgetProvider() {
     }
 
     override fun onAppWidgetOptionsChanged(
-        context: Context,
-        appWidgetManager: AppWidgetManager,
-        appWidgetId: Int,
-        newOptions: Bundle?
+        context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int, newOptions: Bundle?
     ) {
         Log.d("WidgetService", "Widget is Starting")
         updateAppWidget(context, appWidgetManager, appWidgetId)
@@ -61,25 +55,21 @@ class OneplusWidget : AppWidgetProvider() {
     }
 
     private fun updateAppWidget(
-        context: Context,
-        appWidgetManager: AppWidgetManager,
-        appWidgetId: Int
+        context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int
     ) {
         val views = RemoteViews(context.packageName, R.layout.oneplus_widget)
         val locationPreferences = context.getSharedPreferences(WeatherService.LOCATION_PREFERENCE, Context.MODE_PRIVATE)
+        val settingsPreferences = PreferenceManager.getDefaultSharedPreferences(context)
         val lat = locationPreferences.getString(WeatherService.LOCATION_PREFERENCE_LATITUDE, null)
         val long = locationPreferences.getString(WeatherService.LOCATION_PREFERENCE_LONGITUDE, null)
         val isLocationSaved = lat != null && long != null
 
 
-
         val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         if (ActivityCompat.checkSelfPermission(
-                context,
-                Manifest.permission.ACCESS_FINE_LOCATION
+                context, Manifest.permission.ACCESS_FINE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                context,
-                Manifest.permission.ACCESS_COARSE_LOCATION
+                context, Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             return
@@ -120,11 +110,17 @@ class OneplusWidget : AppWidgetProvider() {
 
                             hsv[2] = 0.92f
 
+                            val useOnePlusColor = !settingsPreferences.getBoolean("system_color", false)
+                            val oneplusColor = ContextCompat.getColor(context, R.color.oneplus_red)
+
                             spannable.setSpan(
-                                ForegroundColorSpan(Color.HSVToColor(hsv)),
-                                0,
-                                1,
-                                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                                ForegroundColorSpan(
+                                    if (useOnePlusColor) {
+                                        oneplusColor
+                                    } else {
+                                        Color.HSVToColor(hsv)
+                                    }
+                                ), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
                             )
                             spannable.setSpan(
                                 RelativeSizeSpan(0.9f),
