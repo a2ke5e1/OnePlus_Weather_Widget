@@ -1,0 +1,32 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <PreferenceCategory app:title="Accent Color">
+
+        <SwitchPreferenceCompat
+            app:key="system_color"
+            app:defaultValue="true"
+            app:summary="Works only on Android 12 and above."
+            app:title="Use System Color" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Location" >
+
+        <SwitchPreferenceCompat
+            app:key="auto_detect_location"
+            app:defaultValue="false"
+            app:summary="By default it automatically detects your location."
+            app:title="Manual Location" />
+
+        <EditTextPreference
+            app:key="location_city"
+            app:dependency="auto_detect_location"
+            app:title="Enter your City"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

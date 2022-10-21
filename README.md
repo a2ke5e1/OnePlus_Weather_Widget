@@ -1,4 +1,4 @@
-# OnePlus Weather Widget
+# OnePlus Weather Widget [![Build Status](https://github.com/a2krocks/OnePlus_Weather_Widget/actions/workflows/android.yml/badge.svg)](https://github.com/a2krocks/OnePlus_Weather_Widget/actions/workflows/android.yml)
 
 An attempt to clone OnePlus's Classic Weather Widget with android 12 theme support. It uses OpenWeatherMap's API to get weather data.
 
