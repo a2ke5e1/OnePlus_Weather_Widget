@@ -93,6 +93,7 @@ class OneplusWidget : AppWidgetProvider() {
             )
             data.enqueue(object : Callback<WeatherData> {
                 override fun onResponse(call: Call<WeatherData>, response: Response<WeatherData>) {
+                    Log.d("response", response.toString())
                     if (response.isSuccessful) {
                         val weatherData = response.body()
                         if (weatherData != null) {
