@@ -3,6 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingStart="4dp"
+    android:paddingEnd="4dp"
     android:theme="@style/Theme.OneplusWidget.AppWidgetContainer">
 
     <TextView
@@ -17,7 +19,7 @@
         android:shadowRadius="4"
         android:textColor="#ffffff"
         android:visibility="gone"
-        android:textSize="70sp" />
+        android:textSize="50sp" />
 
     <TextView
         android:id="@+id/descTextView"
@@ -31,7 +33,7 @@
         android:shadowRadius="4"
         android:text="Never\nSettle"
         android:textColor="@color/widget_secondary_text_colo"
-        android:textSize="50sp" />
+        android:textSize="40sp" />
 
     <TextClock
         android:layout_width="match_parent"
@@ -46,6 +48,6 @@
         android:text="Thursday, March 3"
         android:textColor="@color/widget_tertiary_text_color"
         android:textFontWeight="400"
-        android:textSize="14sp" />
+        android:textSize="13sp" />
 
 </LinearLayout>
