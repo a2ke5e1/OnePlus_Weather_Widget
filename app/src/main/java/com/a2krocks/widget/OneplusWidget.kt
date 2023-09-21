@@ -1,9 +1,11 @@
 package com.a2krocks.widget
 
 import android.Manifest
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.LocationManager
@@ -74,6 +76,7 @@ class OneplusWidget : AppWidgetProvider() {
         ) {
             return
         }
+        setOnCalendarClickEvent(context, views)
         locationManager.requestLocationUpdates(
             LocationManager.GPS_PROVIDER, 2000, 10f
         ) {
@@ -135,6 +138,8 @@ class OneplusWidget : AppWidgetProvider() {
                             views.setTextViewText(R.id.tempTextView, spannable)
                             views.setTextViewText(R.id.descTextView, weatherDescription)
 
+                            setOnWeatherClickEvent(context, views)
+
                         }
                         Log.d("response.weatherData.isNull", (weatherData == null).toString())
                         Log.d("response.isSuccessful", response.isSuccessful.toString())
@@ -157,6 +162,29 @@ class OneplusWidget : AppWidgetProvider() {
         }
 
         updateAndTriggerAppWidgetUpdate(context, appWidgetManager, appWidgetId, views)
+    }
+
+    // This will launch Google Weather App on click
+    private fun setOnWeatherClickEvent(
+        context: Context, views: RemoteViews
+    ) {
+        Log.d("setOnClick", "Weather OnClick")
+        val weatherIntent = Intent()
+        weatherIntent.setClassName("com.google.android.googlequicksearchbox", "com.google.android.apps.search.weather.WeatherExportedActivity");
+        val pendingIntent = PendingIntent.getActivity(context, 0, weatherIntent, PendingIntent.FLAG_IMMUTABLE)
+        views.setOnClickPendingIntent(R.id.tempTextView, pendingIntent)
+        views.setOnClickPendingIntent(R.id.descTextView, pendingIntent)
+    }
+    
+    // This will launch your calendar app on click
+    private fun setOnCalendarClickEvent(
+        context: Context, views: RemoteViews
+    ) {
+        Log.d("setOnClick", "Calendar OnClick")
+        val calendarIntent = Intent(Intent.ACTION_MAIN)
+        calendarIntent.addCategory(Intent.CATEGORY_APP_CALENDAR)
+        val pendingIntent = PendingIntent.getActivity(context, 0, calendarIntent, PendingIntent.FLAG_IMMUTABLE)
+        views.setOnClickPendingIntent(R.id.dateTextView, pendingIntent)
     }
 
     private fun updateAndTriggerAppWidgetUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int, views: RemoteViews) {
