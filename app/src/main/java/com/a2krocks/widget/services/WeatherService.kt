@@ -23,6 +23,8 @@ import retrofit2.http.Query
 import java.util.*
 import kotlin.math.roundToInt
 
+//fetching data from openweathermap api
+
 class WeatherService {
 
 
