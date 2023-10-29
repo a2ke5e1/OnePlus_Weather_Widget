@@ -14,6 +14,7 @@ class AlarmHandler(private val context: Context) {
 
         //get current time and add 1.5 seconds
         val c = Calendar.getInstance()
+        //refreshes after every one minute
         val l = c.timeInMillis + 60000
 
         //set the alarm for 10 seconds in the future
